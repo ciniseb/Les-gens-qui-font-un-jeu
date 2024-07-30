@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3cwnm3jxa2mi"]
+
+[ext_resource type="Script" path="res://sources/mob/enemy_base.gd" id="1_jy565"]
+[ext_resource type="Texture2D" uid="uid://c2d32nir1v576" path="res://sources/mob/skeleton/skeleton.png" id="1_kjamx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ky1fi"]
+height = 39.0
+
+[sub_resource type="Animation" id="Animation_pstgl"]
+resource_name = "walk"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v5fan"]
+_data = {
+"walk": SubResource("Animation_pstgl")
+}
+
+[node name="enemy_base" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_jy565")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kjamx")
+hframes = 6
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("CapsuleShape2D_ky1fi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v5fan")
+}

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhbut8ibq8frj"]
+
+[ext_resource type="Texture2D" uid="uid://dd01vm1000807" path="res://texture/IT3rsY.png" id="1_rr724"]
+[ext_resource type="PackedScene" uid="uid://y4g58x0xnwoj" path="res://joueur/joueur.tscn" id="2_va624"]
+[ext_resource type="PackedScene" uid="uid://b3cwnm3jxa2mi" path="res://sources/mob/enemy_base.tscn" id="3_vidjr"]
+
+[node name="monde" type="Node2D"]
+
+[node name="background de base" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-16, -0.999985)
+scale = Vector2(0.821763, 0.803899)
+texture = ExtResource("1_rr724")
+region_enabled = true
+region_rect = Rect2(-4000, -4000, 4000, 4000)
+
+[node name="joueur" parent="." instance=ExtResource("2_va624")]
+
+[node name="enemy_base" parent="." instance=ExtResource("3_vidjr")]
+position = Vector2(176, 1)
