@@ -13,12 +13,11 @@ func _physics_process(delta):
 	var y_mov = Input.get_action_raw_strength("down") - Input.get_action_raw_strength("up")
 	var mov = Vector2(x_mov, y_mov)
 	velocity = mov.normalized()*ms
-	
+	#animation
 	if mov.x > 0:
 		sprite.flip_h = true
 	elif mov.x < 0:
 		sprite.flip_h = false
-		
 	if mov != Vector2.ZERO:
 		if walkTimer.is_stopped():
 			if sprite.frame >= sprite.hframes - 1:

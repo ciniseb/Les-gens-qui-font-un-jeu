@@ -5,8 +5,11 @@ extends CharacterBody2D
 
 @onready var sprite = $Sprite2D
 @onready var player = get_tree().get_first_node_in_group("joueur")
-@onready var anim
+@onready var anim = $AnimationPlayer
 
+func _ready():
+	anim.play("walk")
+	
 func _physics_process(delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction*ms
@@ -15,5 +18,6 @@ func _physics_process(delta):
 		sprite.flip_h = true
 	elif direction.x < -0.1:
 		sprite.flip_h = false
+	
 		
 	

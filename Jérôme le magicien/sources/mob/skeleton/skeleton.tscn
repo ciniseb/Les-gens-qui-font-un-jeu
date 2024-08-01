@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3cwnm3jxa2mi"]
+[gd_scene load_steps=7 format=3 uid="uid://bdhvvy5n3cluq"]
 
-[ext_resource type="Script" path="res://sources/mob/enemy_base.gd" id="1_jy565"]
-[ext_resource type="Texture2D" uid="uid://c2d32nir1v576" path="res://sources/mob/skeleton/skeleton.png" id="1_kjamx"]
+[ext_resource type="Script" path="res://sources/mob/enemy_base.gd" id="1_okt7x"]
+[ext_resource type="Texture2D" uid="uid://c2d32nir1v576" path="res://sources/mob/skeleton/skeleton.png" id="2_tvvvr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ky1fi"]
 height = 39.0
@@ -46,10 +46,10 @@ _data = {
 
 [node name="enemy_base" type="CharacterBody2D"]
 motion_mode = 1
-script = ExtResource("1_jy565")
+script = ExtResource("1_okt7x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_kjamx")
+texture = ExtResource("2_tvvvr")
 hframes = 6
 region_enabled = true
 region_rect = Rect2(-3.56201, 0, 216.562, 56)
