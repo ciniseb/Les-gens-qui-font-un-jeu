@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #ms = movement speed
 @export var ms = 100.0
-
+@export var hp = 10
 @onready var sprite = $Sprite2D
 @onready var player = get_tree().get_first_node_in_group("joueur")
 @onready var anim = $AnimationPlayer
@@ -18,6 +18,7 @@ func _physics_process(delta):
 		sprite.flip_h = true
 	elif direction.x < -0.1:
 		sprite.flip_h = false
-	
+		
+		
 		
 	

@@ -1,24 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://y4g58x0xnwoj"]
+[gd_scene load_steps=6 format=3 uid="uid://y4g58x0xnwoj"]
 
 [ext_resource type="Script" path="res://joueur/joueur.gd" id="1_fha6w"]
 [ext_resource type="Texture2D" uid="uid://dvl6g4y5rphdv" path="res://joueur/wizard_walk.png" id="2_bj6ej"]
+[ext_resource type="PackedScene" uid="uid://b6njumcql6f7y" path="res://sources/hitboxHurtbox/hurtbox.tscn" id="3_owbda"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cnkbi"]
-radius = 6.0
-height = 26.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_ou3im"]
+radius = 7.07107
 
-[node name="joueur" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoytv"]
+size = Vector2(8.75, 24.75)
+
+[node name="joueur" type="CharacterBody2D" groups=["joueur"]]
+z_as_relative = false
+y_sort_enabled = true
 position = Vector2(-1, 0)
 script = ExtResource("1_fha6w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
 texture = ExtResource("2_bj6ej")
 hframes = 9
 frame = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["joueur"]]
-position = Vector2(0, 3)
-shape = SubResource("CapsuleShape2D_cnkbi")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1, 20)
+shape = SubResource("CircleShape2D_ou3im")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -26,3 +34,16 @@ shape = SubResource("CapsuleShape2D_cnkbi")
 unique_name_in_owner = true
 wait_time = 0.092
 one_shot = true
+
+[node name="hurtbox" parent="." instance=ExtResource("3_owbda")]
+collision_layer = 2
+collision_mask = 2
+hurtBoxType = 2
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2(1, 4.375)
+shape = SubResource("RectangleShape2D_yoytv")
+
+[connection signal="hurt" from="hurtbox" to="." method="_on_hurtbox_hurt"]
+
+[editable path="hurtbox"]

@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3cwnm3jxa2mi"]
+[gd_scene load_steps=11 format=3 uid="uid://b3cwnm3jxa2mi"]
 
 [ext_resource type="Script" path="res://sources/mob/enemy_base.gd" id="1_jy565"]
 [ext_resource type="Texture2D" uid="uid://c2d32nir1v576" path="res://sources/mob/skeleton/skeleton.png" id="1_kjamx"]
+[ext_resource type="PackedScene" uid="uid://mwkvrxkv7onb" path="res://sources/hitboxHurtbox/hitbox.tscn" id="3_sbdrr"]
+[ext_resource type="PackedScene" uid="uid://b6njumcql6f7y" path="res://sources/hitboxHurtbox/hurtbox.tscn" id="4_g7xax"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ky1fi"]
-height = 39.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_iddk0"]
+radius = 7.07107
 
 [sub_resource type="Animation" id="Animation_pstgl"]
 resource_name = "walk"
@@ -44,21 +46,48 @@ _data = {
 "walk": SubResource("Animation_pstgl")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crt0v"]
+size = Vector2(21, 37)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8oni"]
+size = Vector2(13, 42)
+
 [node name="enemy_base" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_jy565")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_as_relative = false
+y_sort_enabled = true
 texture = ExtResource("1_kjamx")
 hframes = 6
 region_enabled = true
 region_rect = Rect2(-3.56201, 0, 216.562, 56)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.5, -0.5)
-shape = SubResource("CapsuleShape2D_ky1fi")
+position = Vector2(0, 22)
+shape = SubResource("CircleShape2D_iddk0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_v5fan")
 }
+
+[node name="hitbox" parent="." instance=ExtResource("3_sbdrr")]
+position = Vector2(-58.25, -12.25)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2(57.75, 12.75)
+shape = SubResource("RectangleShape2D_crt0v")
+
+[node name="hurtbox" parent="." instance=ExtResource("4_g7xax")]
+position = Vector2(-58.25, -12.25)
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2(58.75, 13.25)
+shape = SubResource("RectangleShape2D_i8oni")
+
+[editable path="hitbox"]
+[editable path="hurtbox"]

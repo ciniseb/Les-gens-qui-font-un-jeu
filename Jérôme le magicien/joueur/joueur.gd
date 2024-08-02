@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 #ms = movement speed
 @export var ms = 200.0
+@export var hp = 100
+
 @onready var sprite = $Sprite2D
 @onready var walkTimer = get_node("%walkTimer")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -27,3 +29,9 @@ func _physics_process(delta):
 			walkTimer.start()
 	#update la position du joueur
 	move_and_slide()
+
+
+func _on_hurtbox_hurt(damage):
+	hp -= damage # Replace with function body.
+	print(hp)
+	

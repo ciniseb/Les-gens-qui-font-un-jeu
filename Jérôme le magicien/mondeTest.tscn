@@ -2,11 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://dd01vm1000807" path="res://texture/IT3rsY.png" id="1_rr724"]
 [ext_resource type="PackedScene" uid="uid://y4g58x0xnwoj" path="res://joueur/joueur.tscn" id="2_va624"]
-[ext_resource type="PackedScene" uid="uid://b3cwnm3jxa2mi" path="res://sources/mob/enemy_base.tscn" id="3_vidjr"]
+[ext_resource type="PackedScene" uid="uid://bdhvvy5n3cluq" path="res://sources/mob/skeleton/skeleton.tscn" id="3_2br4m"]
 
 [node name="monde" type="Node2D"]
+z_as_relative = false
+y_sort_enabled = true
 
 [node name="background de base" type="Sprite2D" parent="."]
+z_index = -99
 texture_filter = 1
 texture_repeat = 2
 scale = Vector2(0.821763, 0.803899)
@@ -15,6 +18,8 @@ region_enabled = true
 region_rect = Rect2(-4000, -4000, 4000, 4000)
 
 [node name="joueur" parent="." instance=ExtResource("2_va624")]
+z_as_relative = true
+y_sort_enabled = false
 
-[node name="enemy_base" parent="." instance=ExtResource("3_vidjr")]
-position = Vector2(176, 1)
+[node name="Skeleton" parent="." instance=ExtResource("3_2br4m")]
+position = Vector2(-3, -33)
