@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var spawns: Array[Spawn_info] = []
+@export var spawns: Array[Spawn_info] = [] 
 
 @onready var joueur = get_tree().get_first_node_in_group("joueur")
 
@@ -9,7 +9,7 @@ var time = 0
 func _on_timer_timeout():
 	time += 1
 	var enemy_spawns = spawns
-	# a changer pour opti pcq jesus que c'est pas optimal (faire un 
+	# a changer pour opti pcq jesus que c'est pas optimal (faire une classe pour classer les section de spawn)
 	for i in enemy_spawns:
 		if time > i.time_start and time <= i.time_end:
 			if i.spawn_delay_counter < i.enemy_spawn_delay:
@@ -43,7 +43,7 @@ func get_random_position():
 			spawn_pos1 = bottom_left
 			spawn_pos2 = bottom_right
 		"left":
-			spawn_pos1 = top_left
+			spawn_pos1 = top_left#
 			spawn_pos2 = bottom_left
 		"right":
 			spawn_pos1 = top_right

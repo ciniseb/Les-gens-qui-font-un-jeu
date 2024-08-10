@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #ms = movement speed
-@export var ms = 200.0
+@export var ms = 100.0
 @export var hp = 100
 
 @onready var sprite = $Sprite2D
@@ -31,7 +31,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_hurtbox_hurt(damage):
+func _on_hurtbox_hurt(damage, angle, attack_knockback):
 	hp -= damage # Replace with function body.
 	print(hp)
 	

@@ -87,11 +87,13 @@ wait_time = 0.5
 [node name="hurtbox" parent="." instance=ExtResource("4_b6ye2")]
 position = Vector2(-58.25, -12.25)
 collision_mask = 4
+hurtBoxType = 1
 
 [node name="CollisionShape2D" parent="hurtbox" index="0"]
 position = Vector2(58.25, 12.75)
 shape = SubResource("RectangleShape2D_jsr21")
 
 [connection signal="timeout" from="hitbox/DisableHitboxTimer" to="hitbox" method="_on_disable_hitbox_timer_timeout"]
+[connection signal="hurt" from="hurtbox" to="." method="_on_hurtbox_hurt"]
 
 [editable path="hurtbox"]

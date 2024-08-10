@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhbut8ibq8frj"]
+[gd_scene load_steps=5 format=3 uid="uid://dhbut8ibq8frj"]
 
 [ext_resource type="Texture2D" uid="uid://dd01vm1000807" path="res://texture/IT3rsY.png" id="1_rr724"]
 [ext_resource type="PackedScene" uid="uid://y4g58x0xnwoj" path="res://joueur/joueur.tscn" id="2_va624"]
 [ext_resource type="PackedScene" uid="uid://b8bbdnpldquw7" path="res://sources/spawner/enemy_spawner.tscn" id="3_nfdqq"]
+[ext_resource type="PackedScene" uid="uid://b8wouj5hjjun1" path="res://sources/Spell/IceSpear/ice_spear_manager.tscn" id="4_7q2um"]
 
-[node name="monde" type="Node2D"]
+[node name="monde" type="Node2D" groups=["monde"]]
 z_as_relative = false
 y_sort_enabled = true
+
+[node name="IceSpear_manager" parent="." instance=ExtResource("4_7q2um")]
 
 [node name="background de base" type="Sprite2D" parent="."]
 z_index = -99
@@ -18,8 +21,6 @@ texture = ExtResource("1_rr724")
 region_enabled = true
 region_rect = Rect2(-4000, -4000, 4000, 4000)
 
-[node name="joueur" parent="." instance=ExtResource("2_va624")]
-z_as_relative = true
-y_sort_enabled = false
-
 [node name="EnemySpawner" parent="." instance=ExtResource("3_nfdqq")]
+
+[node name="joueur" parent="." instance=ExtResource("2_va624")]
